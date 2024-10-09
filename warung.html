@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Tegal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        header {
+            background-color: #8c8c8c;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .main-content {
+            display: flex;
+        }
+        .left-column {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .dish {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .dish img {
+            width: 250px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .dish-description {
+            flex: 1;
+        }
+        .dish-description h2 {
+            color: #8c8c8c;
+            margin: 0;
+        }
+        .dish-description p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 0;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 1px solid #ccc;
+        }
+        .sidebar h3 {
+            color: #d66;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #8c8c8c;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WARUNG INFORMATIKA</h1>
+            <p>Warungnya Arek TC</p>
+        </header>
+
+        <nav>
+            <a href="#">Beranda</a>
+            <a href="#">Daftar Masakan</a>
+            <a href="#">Katering</a>
+            <a href="#">Tentang</a>
+            <a href="#">Kontak</a>
+        </nav>
+
+        <div class="main-content">
+            <div class="left-column">
+                <br>
+                <div class="dish">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Made%27s_Warung_Nasi_Campur.jpg/1200px-Made%27s_Warung_Nasi_Campur.jpg">
+                    <div class="dish-description">
+                        <h2>Nasi Campur</h2>
+                        <p><strong>Perpaduan yang Lezat</strong><br>Nasi campur adalah salah satu hidangan khas Suku Jawa yang terdiri atas nasi putih yang dihidangkan dengan bermacam-macam lauk dan sayur. Banyaknya pilihan membuat semua orang dapat menikmati kelezatan hidangan ini.</p>
+                    </div>
+                </div>
+                <div class="dish">
+                    <img src="https://www.dapurkobe.co.id/wp-content/uploads/nasi-kuning-ayam-crispy.jpg">
+                    <div class="dish-description">
+                        <h2>Nasi Kuning</h2>
+                        <p><strong>Gurih dan Nikmat</strong><br>Nasi kuning adalah makanan khas Indonesia. Makanan ini terbuat dari beras yang dimasak bersama dengan kunyit serta santan dan rempah-rempah. Dengan ditambahkannya bumbu-bumbu dan santan, nasi kuning memiliki rasa yang lebih gurih daripada nasi putih.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <h3>Masakan Populer</h3>
+                <ul>
+                    <li>Nasi Campur</li>
+                    <li>Nasi Kuning</li>
+                    <li>Nasi Goreng</li>
+                    <li>Kwetiaw Goreng</li>
+                    <li>Batagor</li>
+                    <li>Es Teh Jumbo</li>
+                </ul>
+                <h3>Kontak</h3>
+                <p>Warung Teknik Informatika</p>
+                <p>Institut Teknologi Sepuluh Nopember</p>
+            </aside>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Warung Informatika</p>
+        </footer>
+    </div>
+</body>
+</html>
