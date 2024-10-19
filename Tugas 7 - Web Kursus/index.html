@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #1f1f1f;
+        color: #f5f5f5;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #61dafb;
+    }
+    h3 {
+        font-size: 20px;
+        color: #d1d1d1;
+        margin-bottom: 30px;
+    }
+    a {
+        text-decoration: none;
+        color: #61dafb;
+    }
+    a:hover {
+        color: #21a1f1;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    .column {
+        flex: 1 1 calc(25% - 40px);
+        background-color: #2b2b2b;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        max-height: 300px;
+    }
+    .column:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        max-height: 500px;
+    }
+    .content {
+        padding: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .content img {
+        width: 100%;
+        border-bottom: 2px solid #444;
+    }
+    .content h3 {
+        font-size: 22px;
+        margin: 15px 0;
+        color: #f5f5f5;
+    }
+    .content p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #cccccc;
+        max-height: 72px;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    .column:hover .content p {
+        max-height: 200px;
+    }
+    .title {
+        background-color: #333;
+        padding: 20px;
+        padding-left: 36%;
+        padding-right: 36%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    @media screen and (max-width: 850px) {
+        .column {
+            flex: 1 1 calc(50% - 20px);
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .column {
+            flex: 1 1 100%;
+        }
+    }
+</style>
+
+<div class="title">
+    <h1>GeeksforGeeks</h1>
+</div>
+<div class="container">
+    <h3>A Computer Science Portal for Geeks</h3>
+    <hr><br>
+    <h2>Portfolio</h2><br>
+    <div class="row">
+        <div class="column">
+            <div class="content">
+                <img src="https://www.geeksforgeeks.org/wp-content/uploads/html.png" alt="">
+                <h3><a href="#">HTML Tutorials</a></h3>
+                <p>
+                    HTML stands for Hyper Text Markup Language. It is used to design web pages using markup language. HTML is the combination of Hypertext and Markup language. Hypertext defines the link between the web pages.
+                </p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="content">
+                <img src="https://www.geeksforgeeks.org/wp-content/uploads/CSS.png" alt="">
+                <h3><a href="#">CSS Tutorials</a></h3>
+                <p>
+                    Cascading Style Sheets, fondly referred to as CSS, is a simply designed language intended to simplify the process of making web pages presentable. CSS allows you to apply styles to web pages.
+                </p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="content">
+                <img src="https://www.geeksforgeeks.org/wp-content/uploads/php-1.png" alt="">
+                <h3><a href="#">PHP Tutorials</a></h3>
+                <p>
+                    The term PHP is an acronym for PHP: Hypertext Preprocessor. PHP is a server-side scripting language designed specifically for web development. PHP can be easily embedded in HTML files.
+                </p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="content">
+                <img src="https://www.geeksforgeeks.org/wp-content/uploads/javascript.png" alt="">
+                <h3><a href="#">JavaScript Tutorials</a></h3>
+                <p>
+                    Javascript was developed by Brendan Eich in 1995. At first, it was called LiveScript but was later named to JavaScript. JavaScript is the muscle of the structure.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
