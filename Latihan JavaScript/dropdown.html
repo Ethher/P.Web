@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Dinamis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        select {
+            margin: 10px;
+            padding: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dropdown Dinamis</h2>
+    <label>Kategori:</label>
+    <select id="kategori" onchange="populateSubkategori()">
+        <option value="">Pilih Kategori</option>
+        <option value="Buah">Buah</option>
+        <option value="Sayur">Sayur</option>
+    </select>
+
+    <label>Subkategori:</label>
+    <select id="subkategori">
+        <option value="">Pilih Subkategori</option>
+    </select>
+
+    <script>
+        const subkategoriData = {
+            Buah: ["Apel", "Jeruk", "Pisang"],
+            Sayur: ["Bayam", "Wortel", "Kangkung"]
+        };
+
+        function populateSubkategori() {
+            const kategori = document.getElementById('kategori').value;
+            const subkategoriDropdown = document.getElementById('subkategori');
+
+            if (kategori) {
+                const options = subkategoriData[kategori] || [];
+                subkategoriDropdown.innerHTML = '<option value="">Pilih Subkategori</option>';
+                options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    subkategoriDropdown.appendChild(opt);
+                });
+            } else {
+                subkategoriDropdown.innerHTML = '<option value="">Pilih Subkategori</option>';
+            }
+        }
+    </script>
+</body>
+</html>
