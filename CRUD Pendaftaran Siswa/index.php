@@ -44,6 +44,7 @@ $pegawaiResult = $conn->query($pegawaiQuery);
                 <th>Email</th>
                 <th>Alamat</th>
                 <th>Tanggal Lahir</th>
+                <th>Foto</th>
                 <th>Pegawai Pendaftar</th>
                 <th>Aksi</th>
             </tr>
@@ -57,6 +58,13 @@ $pegawaiResult = $conn->query($pegawaiQuery);
                         <td><?= $row['email'] ?></td>
                         <td><?= $row['alamat'] ?></td>
                         <td><?= $row['tanggal_lahir'] ?></td>
+                        <td>
+                            <?php if ($row['foto']): ?>
+                                <img src="uploads/<?= $row['foto'] ?>" width="50" alt="Foto Siswa">
+                            <?php else: ?>
+                                Tidak Ada
+                            <?php endif; ?>
+                        </td>
                         <td><?= $row['pegawai_pendaftar'] ?? 'Belum Terdaftar' ?></td>
                         <td>
                             <a href="edit.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
