@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 12px);
+            padding: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #name-suggestions {
+            display: none;
+            border: 1px solid #ccc;
+            background: #fff;
+            max-height: 150px;
+            overflow-y: auto;
+            margin-top: -10px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1000;
+            width: calc(100% - 12px);
+        }
+
+        #name-suggestions li {
+            list-style-type: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        #name-suggestions li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form Registrasi</h2>
+    <form>
+        <label>Nama Mahasiswa:</label>
+        <input type="text" id="nama" oninput="suggestName(this)">
+        <ul id="name-suggestions"></ul>
+
+        <label>NIM:</label>
+        <input type="text">
+
+        <label>Mata Kuliah:</label>
+        <input type="text">
+
+        <label>Dosen:</label>
+        <input type="text">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const mahasiswa = ["Ahmad Fauzi", "Aisyah Putri", "Budi Santoso", "Citra Dewi", "Dian Prasetyo", "Eka Rahmawati"];
+
+        function suggestName(input) {
+            const query = input.value.toLowerCase();
+            const suggestionList = document.getElementById('name-suggestions');
+
+            suggestionList.innerHTML = '';
+            if (query.length > 0) {
+                suggestionList.style.display = 'block';
+                const suggestions = mahasiswa.filter(name => name.toLowerCase().includes(query));
+                suggestions.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    li.onclick = () => {
+                        input.value = name;
+                        suggestionList.style.display = 'none';
+                    };
+                    suggestionList.appendChild(li);
+                });
+            } else {
+                suggestionList.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
