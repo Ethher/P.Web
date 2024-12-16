@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian Kode Pos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        select {
+            width: calc(100% - 12px);
+            padding: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            background: #e7f3ff;
+            padding: 10px;
+            border-left: 4px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h2>Pencarian Kode Pos</h2>
+    <div class="form-container">
+        <label>Provinsi:</label>
+        <select id="provinsi" onchange="populateKabupaten()">
+            <option value="">Pilih Provinsi</option>
+        </select>
+
+        <label>Kabupaten/Kota:</label>
+        <select id="kabupaten" onchange="populateKecamatan()">
+            <option value="">Pilih Kabupaten/Kota</option>
+        </select>
+
+        <label>Kecamatan:</label>
+        <select id="kecamatan">
+            <option value="">Pilih Kecamatan</option>
+        </select>
+
+        <button onclick="searchKodePos()">Cari</button>
+    </div>
+    <p id="result"></p>
+
+    <script>
+        const kodePosData = [
+            { provinsi: "Jawa Timur", kabupaten: "Surabaya", kecamatan: "Tegalsari", kode_pos: "60262", daerah: "Surabaya, Jawa Timur" },
+            { provinsi: "Jawa Barat", kabupaten: "Bandung", kecamatan: "Coblong", kode_pos: "40131", daerah: "Bandung, Jawa Barat" },
+            { provinsi: "DKI Jakarta", kabupaten: "Jakarta Pusat", kecamatan: "Gambir", kode_pos: "10110", daerah: "Jakarta Pusat, DKI Jakarta" }
+        ];
+
+        function populateDropdown(dropdown, items, defaultOption) {
+            dropdown.innerHTML = `<option value="">${defaultOption}</option>`;
+            items.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item;
+                option.textContent = item;
+                dropdown.appendChild(option);
+            });
+        }
+
+        function populateKabupaten() {
+            const provinsi = document.getElementById('provinsi').value;
+            const kabupatenDropdown = document.getElementById('kabupaten');
+            const filteredKabupaten = [...new Set(kodePosData
+                .filter(item => item.provinsi === provinsi)
+                .map(item => item.kabupaten))];
+            populateDropdown(kabupatenDropdown, filteredKabupaten, "Pilih Kabupaten/Kota");
+            document.getElementById('kecamatan').innerHTML = '<option value="">Pilih Kecamatan</option>';
+        }
+
+        function populateKecamatan() {
+            const kabupaten = document.getElementById('kabupaten').value;
+            const kecamatanDropdown = document.getElementById('kecamatan');
+            const filteredKecamatan = kodePosData
+                .filter(item => item.kabupaten === kabupaten)
+                .map(item => item.kecamatan);
+            populateDropdown(kecamatanDropdown, filteredKecamatan, "Pilih Kecamatan");
+        }
+
+        function searchKodePos() {
+            const provinsi = document.getElementById('provinsi').value;
+            const kabupaten = document.getElementById('kabupaten').value;
+            const kecamatan = document.getElementById('kecamatan').value;
+
+            const resultElement = document.getElementById('result');
+            const result = kodePosData.find(item =>
+                item.provinsi === provinsi &&
+                item.kabupaten === kabupaten &&
+                item.kecamatan === kecamatan
+            );
+
+            if (result) {
+                resultElement.innerHTML = `<strong>Kode Pos:</strong> ${result.kode_pos}<br><strong>Kecamatan:</strong> ${result.kecamatan}<br><strong>Daerah:</strong> ${result.daerah}`;
+            } else {
+                resultElement.innerHTML = "Data tidak ditemukan.";
+            }
+        }
+
+        const provinsiDropdown = document.getElementById('provinsi');
+        const provinsiList = [...new Set(kodePosData.map(item => item.provinsi))];
+        populateDropdown(provinsiDropdown, provinsiList, "Pilih Provinsi");
+    </script>
+</body>
+</html>
